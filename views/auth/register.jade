@@ -1,0 +1,49 @@
+extends ../notlogged
+
+block body
+  .row
+    .col-lg-4.col-lg-offset-4
+      .well(style="margin-top:15%")
+        if errors
+          each val in errors
+            .alert.alert-danger= val 
+        form.form(role="form", action="/auth/local/register", method="post")
+          //- .form-group
+          //-    label Nombre de Usuario *
+          //-    input.form-control(type="text",name="username",required, placeholder="Username")
+          .form-group
+            label #{__('Register.Email')} *
+            input.form-control(type="text",name="email",required, placeholder="#{__('Register.Email')}") 
+          .form-group
+            label #{__('Register.Password')} *
+            input.form-control(type="password",name="password",required,placeholder="#{__('Register.Password')}")
+          .form-group
+            label #{__('Register.RepetirPassword')} *
+            input.form-control(type="password",name="password_repeat",required,placeholder="#{__('Register.RepetirPassword')}")   
+          .form-group
+            .checkbox
+              label
+                input(type="checkbox", name="politicas",required)
+                a(href="/politicas",target="_blank") #{__('Register.Politicas')} *         
+          hr
+          .form-group
+            label #{__('Register.Nombre')}
+            input.form-control(type="text",name="first_name", placeholder="#{__('Register.Nombre')}")
+          .form-group
+            label #{__('Register.Apellidos')}
+            input.form-control(type="text",name="last_name", placeholder="#{__('Register.Apellidos')}")                
+          .form-group
+            label #{__('Register.Constructora')}
+            input.form-control(type="text",name="constructora", placeholder="#{__('Register.Constructora')}")
+          .form-group
+            label #{__('Register.Cargo')}
+            input.form-control(type="text",name="cargo", placeholder="#{__('Register.Cargo')}")
+          .form-group
+            input.form-control(type="hidden",name="rol", value="Jefe de Obra", disabled="disabled")
+          .form-group
+            label #{__('Register.Telefono')}
+            input.form-control(type="text",name="telefono", placeholder="#{__('Register.Telefono')}")          
+          button.btn.btn-success.btn-block(type="submit") #{__('Register.SignUp')}
+        
+              
+

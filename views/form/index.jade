@@ -1,0 +1,60 @@
+extends ../notlogged
+
+block body
+  .row
+    .col-md-8
+      a(href="http://www.comparativos.es")
+        img.img-responsive(src='/images/comparativos_60.png',style="margin:20px;")
+    .col-md-4
+      ul.nav.navbar-nav.pull-right
+        li
+          a(href="/form/" + peticion.id,style="color:#203e99") ES
+        li
+          a(href="/form/" + peticion.id + "/eu",style="color:#203e99") EU  
+  .row 
+    .col-lg-10.col-lg-offset-1
+      h1= form.title
+      h4= form.description
+      if !peticion.answered
+        .form-group
+          label#status Puede subir un fichero si quiere (máx 10MB)
+          //- #{locale('Proveedor.Fichero')} - así sería cuando pilla con el i18n
+          input.form-control(id="files",type="file",name="file") 
+          table.table
+            thead
+              th Concepto
+              th Cantidad Requerida
+              th Notas
+              th Precio Unidad
+              th Comentarios
+            tbody                      
+            each row, index in form.content
+              tr            
+                td
+                  p= row.concept
+                td
+                  span  #{row.quantity} #{row.unit}
+                td
+                  p= row.notes
+                td
+                  input.form-control(type="number",step="any",min="0",name="#{row.order}", value="0")
+                td
+                  textarea.form-control(name="#{row.order}")
+          .form-group
+            label Forma de pago
+            input.form-control(type="text",name="formaPago")
+          input#file_url(type="hidden",name="file_url",value="")
+          hr                
+          input.btn.btn-success(type="submit", value="Enviar Respuesta", id="envioFormulario")
+        script
+          include ./s3_uploader.js
+      else
+        p Esta petición ya tiene respuesta. Si desea modificar algo de lo enviado por favor pongase en concato con quien le envió el comparativo.
+        .row
+          .col-md-6.col-md-offset-4(style="margin-top:10px;")           
+            a(style="padding-right: 10px", href='https://twitter.com/COMPARATIVOS')
+              img(src='/images/RRSS/twittera.png')
+            a(style="padding-right: 10px", href='https://www.linkedin.com/groups/Comparativos-Obra-7498628?gid=7498628&mostPopular=&trk=tyah&trkInfo=tarId%3A1412096186376%2Ctas%3Acomparativos%2Cidx%3A2-1-4')
+              img(src='/images/RRSS/linkedina.png')
+            a(href='https://facebook.com/comparativos')
+              img(src='/images/RRSS/facebooka.png')

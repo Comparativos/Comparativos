@@ -1,0 +1,26 @@
+extends ./layout
+block body
+  if currentUser
+    script
+      | var currentUser = {
+      |  id:  '#{currentUser.id}',
+      |  username:  '#{currentUser.username}',
+      |  email:  '#{currentUser.email}',
+      |  first_name:  '#{currentUser.first_name}',
+      |  last_name:  '#{currentUser.last_name}',
+      |  cargo:  '#{currentUser.cargo}',
+      |  constructora:  '#{currentUser.constructora}',
+      |  phone: '#{currentUser.phone}',
+      |  createdAt:  '#{currentUser.createdAt}',
+      |  updatedAt:  '#{currentUser.updatedAt}',
+      |  locale:  '#{currentUser.idioma}'
+      | }
+  if logs
+    script
+      | var lastLogs = !{JSON.stringify(logs)}
+  script  
+    | var siteUrl = '#{siteUrl}'   
+    | var locale =  !{JSON.stringify(locale)}
+  div(ng-include="'app/header/templates/index.html'")
+  .container
+    ui-view

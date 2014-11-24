@@ -1,0 +1,15 @@
+extends ../notlogged
+
+block body
+  .row
+    .col-lg-4.col-lg-offset-4
+      .well(style="margin-top:15%")
+        h1 #{__('Reset.Reestablecer')}
+        if errors
+          each val in errors
+            .alert.alert-danger= __(val)    
+        form.form(role="form", action="/auth/reset/process", method="post")
+          .form-group
+            label #{__('Reset.Email')}
+            input.form-control(type="email",name="email",required,placeholder="#{__('Reset.Email')}")
+          button.btn.btn-success.btn-block(type="submit") #{__('Reset.EnviarPeticion')}

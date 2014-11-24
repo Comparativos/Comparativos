@@ -1,0 +1,163 @@
+extends ./notlogged
+
+block body
+  .container
+    .row(id="header")
+      .col-md-4
+        img.img(src='/images/comparativos2blanco.png', rel="image_src")  
+      .col-md-8
+        .container-fluid
+          .navbar-header
+            btn.btn.navbar-toggle.collapsed(data-toggle='collapse', data-target='#menu')
+              span.glyphicon.glyphicon-align-justify
+            a.navbar-brand(href='')
+          #menu.collapse.navbar-collapse
+            ul.nav.navbar-nav.pull-right
+              li
+                a(href="#funciona",style="color:#fff;") #{locale['ComoFunciona']}
+              li
+                a(href="#beneficios",style="color:#fff;") #{locale['Beneficios']}
+              li
+                a(href="/preguntas",style="color:#fff;") #{locale['Preguntas']}
+              li
+                a(href="/es",style="color:#eee") ES
+              li
+                a(href="/eu",style="color:#eee") EU                
+  .container(style="margin-top:1%")
+    .row
+      .col-md-8  
+        iframe(src="//player.vimeo.com/video/110898721?byline=0&amp;portrait=0&amp;color=ffffff" width="750" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen)
+      .col-md-4
+        .well
+          if errors
+            each val in errors
+              .alert.alert-danger= val    
+          form.form(role="form", action="/auth/local/register", method="post")
+            .form-group
+              label #{locale['Email']} *
+              input.form-control(type="text",name="email",required, placeholder="#{locale['Email']}") 
+            .form-group
+              label #{locale['Password']} *
+              input.form-control(type="password",name="password",required,placeholder="#{locale['Password']}")
+            .form-group
+              label #{locale['RepetirPassword']} *
+              input.form-control(id="txtFormulario",type="password",name="password_repeat",required,placeholder="#{locale['RepetirPassword']}")   
+            .form-group
+              .checkbox
+                label
+                  input(type="checkbox", name="politicas",required)
+                  a(href="/politicas",target="_blank") #{locale['Politicas']} *
+            button.btn.btn-success.btn-block(id="btn",type="submit") #{locale['Registrarse']}
+            p(style="text-align:center;")   #{locale['OTambien']}
+            a.btn.btn-primary.btn-block(id="btn",href="/login") #{locale['IniciarSesion']}
+            div.div(style="display: none;")
+              ul
+                li
+                  a(href="/auth/linkedin") Login Linkedin
+  .container
+    .row
+      div.div(id="lines")
+  #funciona
+    .container
+      .row
+        h2.h2(style="text-align:center") #{locale['ComoFunciona']}
+      .row
+        .col-md-4
+          div.div
+            img.img(src="images/proceso/1.png")
+            p.p 
+              b #{locale['ComoFunciona1']}
+        .col-md-4
+          div.div
+            img.img(src="images/proceso/2.png")
+        .col-md-2
+          div.div
+            img.img(src="images/proceso/3.png")
+            p.p 
+              b #{locale['ComoFunciona2']}
+        .col-md-2
+          div.div
+            img.img(src="images/proceso/4.png")
+            p.p
+              b #{locale['ComoFunciona3']}
+    .container
+      .row
+        img.img(src="images/proceso/fases.png")            
+  .container
+    .row
+      div.div(id="lines")
+  #beneficios
+    .container
+      h2.h2(style="text-align:center") #{locale['Beneficios']}
+      table.table(id="tablecenter")
+        thead
+          tr
+            th
+              img.img(src="images/beneficios/reloj.png", class="imgcenter")
+            th
+              img.img(src="images/beneficios/carpeta.png")
+            th
+              img.img(src="images/beneficios/dedo.png")
+            th
+              img.img(src="images/beneficios/excel.png")
+            th
+              img.img(src="images/beneficios/Interacción.png")
+            th
+              img.img(src="images/beneficios/multidispositivo.png")  
+            th
+              img.img(src="images/beneficios/nube.png") 
+            th
+              img.img(src="images/beneficios/candado.png") 
+        tbody
+          tr
+            td
+              p.p #{locale['Beneficios1']}
+            td 
+              p.p #{locale['Beneficios2']}
+            td 
+              p.p #{locale['Beneficios3']}
+            td 
+              p.p #{locale['Beneficios4']}
+            td 
+              p.p #{locale['Beneficios5']}
+            td 
+              p.p #{locale['Beneficios6']}
+            td 
+              p.p #{locale['Beneficios7']}
+            td 
+              p.p  #{locale['Beneficios8']}
+  .container(id="footer", style="margin-top:1%;")
+    .row
+      .col-md-6(style="margin-top:10px;")           
+        a(href='https://twitter.com/COMPARATIVOS')
+          img.nopin(src='/images/RRSS/twittera.png', onmouseout='this.src=\'/images/RRSS/twittera.png\' ', onmouseover='this.src=\'/images/RRSS/twitter.png\' ')
+        a(href='https://www.linkedin.com/groups/Comparativos-Obra-7498628?gid=7498628&mostPopular=&trk=tyah&trkInfo=tarId%3A1412096186376%2Ctas%3Acomparativos%2Cidx%3A2-1-4')
+          img.nopin(src='/images/RRSS/linkedina.png', onmouseout='this.src=\'/images/RRSS/linkedina.png\' ', onmouseover='this.src=\'/images/RRSS/linkedin.png\' ')   
+        a(href='https://facebook.com/comparativos')
+          img.nopin(src='/images/RRSS/facebooka.png', onmouseout='this.src=\'/images/RRSS/facebooka.png\' ', onmouseover='this.src=\'/images/RRSS/facebook.png\' ')
+      .col-md-4(style="margin-top:10px;")
+        a(href="http://www.itcons.es")
+          img.img(src='/images/logo-itcons.png')
+    .row
+      .col-md-10.col-md-offset-1
+        p.p(id="txtPie") Portuetxe 45B piso 2º oficina 9 20018 | Donostia - San Sebastian | Gipuzkoa | 943 32 50 84 | info@itcons.es
+  .container(id="avisoCookies")
+    .row
+      .col-md-12
+        p.p #{locale['AvisoCookies']}
+          a(href="javascript:void(0);" style="padding:4px;background:#4682B4;text-decoration:none;color:#fff;" onclick="QuitarCookies();")
+            b OK!
+          a(href="/politicas" target="_blank" style="padding-left:5px;text-decoration:none;color:#ffffff;") #{locale['MasInformacion']}
+  script
+    | (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    | (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    | m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    | })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    | ga('create', 'UA-45536061-3', 'auto');
+    | ga('send', 'pageview');
+  script
+    | _gaq.push(['_setCustomVar', 1, 'IP', '<?=$ip;?>', 1]);
+  script
+    | function QuitarCookies(){
+    | document.getElementById("avisoCookies").style.display="none";
+    | }

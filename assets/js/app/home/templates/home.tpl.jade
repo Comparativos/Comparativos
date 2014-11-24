@@ -1,0 +1,17 @@
+.col-md-9
+  .row
+    .col-sm-8
+      h1 Comparativos.es
+        p.lead.text-muted Usa tu tiempo para lo que
+            b de verdad importa.
+    .col-sm-4
+      .panel.panel-default
+        .panel-heading
+           strong Log de eventos
+            span(style='cursor: pointer;', tooltip-placement='right', tooltip='Log de las últimas actividades relacionadas con las obras del usuario')
+               i.fa.fa-question-circle
+        .panel-body(ng-hide='eventLogs', style='text-muted;text-align: center;')
+          i.fa.fa-circle-o-notch.fa-spin
+          ul.list-group(style='max-height: 400px; overflow-y: scroll;')
+            li.list-group-item(class="{{eventLog.action==='create'?.'bg-success':.'bg-danger'}}",ng-repeat='eventLog in eventLogs')
+              i.fa(class="fa-{{eventLog.action==='create'?'plus-square':''}}{{eventLog.action==='destroy'?'minus-square':''}}")

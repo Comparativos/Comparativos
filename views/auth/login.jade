@@ -1,0 +1,23 @@
+extends ../notlogged
+
+block body
+  .row
+    .col-lg-4.col-lg-offset-4
+      .well(style="margin-top:15%")
+        h1 Login
+        if errors
+          each val in errors
+            .alert.alert-danger= __(val)    
+        form.form(role="form", action="/auth/local", method="post")
+          .form-group
+            label= __('Login.UsernameOrEmail')
+            input.form-control(type="text",name="identifier", placeholder="#{__('Login.UsernameOrEmail')}")
+          .form-group
+            label= __('Login.Password')
+            input.form-control(type="password",name="password",placeholder="#{__('Login.Password')}")
+          button.btn.btn-success.btn-block(type="submit") #{__('Login.SignIn')}
+
+        p(style="text-align:center;") #{__('Login.OTambien')}
+        a.btn.btn-primary.btn-block(href="/register") #{__('Login.Registrar')}
+        hr
+        a(href="/resetpass") #{__('Login.ResetPass')}

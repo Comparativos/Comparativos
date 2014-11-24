@@ -1,0 +1,30 @@
+div(ng-controller='HeaderCtrl')
+  .navbar.navbar-default.navbar-static-top(role='navigation')
+    .container
+      .navbar-header
+        a.navbar-brand(href='/comparativos')
+          img.img-responsive(title="Comparativos.es",alt="Comparativos.es",src='/images/comparativos_logo_300x36.png')
+      ul.nav.navbar-nav.navbar-left(style="margin-left:10%")
+        li 
+          a(ui-sref='obras.list') {{locale['Header.Obras']}}
+        li
+          a(ui-sref='comparativos.list') {{locale['Header.Comparativos']}}
+      ul.nav.navbar-nav.navbar-right
+        li(ng-repeat='navItem in navItems')
+          a(href='{{navItem.url}}')
+            | {{navItem.title}}
+        li(ng-show="currentUser")
+          a.dropdown-toggle(href="#",data-toggle="dropdown")
+            | {{currentUser.first_name ? currentUser.first_name : currentUser.email }} 
+            span.caret
+          ul.dropdown-menu(role="menu")
+            li
+              a(href="/profile") {{locale['Header.MiPerfil']}}
+            li
+              a(href="/logout") {{locale['Header.CerrarSesion']}}
+        li
+          a.dropdown-toggle(href="#",data-toggle="dropdown", class="bg-{{alert?'primary':'' }}", style="{{alert?'color:#fff;':'' }}",ng-click="removeAlert()")
+            span.glyphicon.glyphicon-envelope 
+          ul.dropdown-menu(role="menu",style="max-height:400px;overflow-y:scroll;")
+            li(ng-repeat="log in eventLogs")
+             log

@@ -1,0 +1,30 @@
+.container
+  h1(style='margin-top: 0;')
+    | {{obra.title}}
+  p.lead {{obra.description}}
+  span.label.label-success(ng-show='!obra.archived') {{locale['Obras.View.EnCurso']}}    
+  span.label.label-danger(ng-show='obra.archived') {{locale['Obras.View.Archivada']}}
+  ul.list-inline
+    li(ng-repeat='owner in obra.owners')
+      i.glyphicon.glyphicon-user
+      | {{owner.first_name || owner.email}} 
+  ul.list-inline
+    li(ng-hide='obra.archived')
+      span.btn.btn-warning.pull-right(ng-click='archivarObra(\'true\')')
+        | {{locale['Obras.View.ArchivarObra']}}
+    li(ng-show='obra.archived')
+      span.btn.btn-success.pull-right( ng-click='archivarObra(\'false\')')
+        | {{locale['Obras.View.DesarchivarObra']}}
+    li
+      span.btn.btn-danger.pull-right(ng-click='destroyObra()')
+        | {{locale['Obras.View.EliminarObra']}}
+  .panel.panel-default
+    .panel-heading
+      h3 {{locale['Obras.View.Comparativos']}}
+    .list-group
+      a.list-group-item(ui-sref='comparativos.view({id: comparativo.id})', ng-repeat='comparativo in obra.populatedComparativos')
+        h4.list-group-item-heading
+          i.fa.fa-cog {{comparativo.title}}
+          small(title='{{locale["Obras.View.UltimaActividad"]}}')
+            i.fa.fa-refresh {{comparativo.lastActivity | amCalendar}}
+        p.list-group-item-text {{comparativo.description}}

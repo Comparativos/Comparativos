@@ -1,0 +1,63 @@
+extends ../notlogged
+
+block body
+  .row
+    .col-md-8
+      a(href="http://www.comparativos.es")
+        img.img-responsive(src='/images/comparativos_60.png',style="margin:20px;")
+    .col-md-4
+      ul.nav.navbar-nav.pull-right
+        li
+          a(href="/form/" + peticion.id,style="color:#203e99") ES
+        li
+          a(href="/form/" + peticion.id + "/eu",style="color:#203e99") EU  
+  .row 
+    .col-lg-10.col-lg-offset-1
+      h1= form.title
+      h4= form.description
+      if !peticion.answered
+        .form-group
+          label#status Nahi izanez gero fitxategia igo (gehienez 10MB)
+        .form-group
+          div.div(style="background-color:lightgrey;border: black 1px solid;width: 140px;border-radius: 5px; height: 30px;")
+            label(style="bode") Fitxategia hautatu
+              input.sr-only.form-control(id="files",type="file",name="file")          
+        form.form-inline(method="post", action="/form/submit/#{peticion.id}/eu", enctype="multipart/form-data")
+          table.table
+            thead
+              th Kontzeptua
+              th Eskatutako kopurua
+              th Oharrak
+              th Prezioa unitateko
+              th Iruzkina
+            tbody                      
+            each row, index in form.content
+              tr            
+                td
+                  p= row.concept
+                td
+                  span  #{row.quantity} #{row.unit}
+                td
+                  p= row.notes
+                td
+                  input.form-control(type="number",step="any",min="0",name="#{row.order}", value="0")
+                td
+                  textarea.form-control(name="#{row.order}")
+          .form-group
+            label Ordainketa era
+            input.form-control(type="text",name="formaPago")
+          input#file_url(type="hidden",name="file_url",value="")
+          hr                
+          input.btn.btn-success(type="submit", value="Erantzuna bidali", id="envioFormulario")
+        script
+          include ./s3_uploader.js
+      else
+        p Eskaera honek iada erantzuna du. Bidalitako zerbait aldatu nahi baduzu, konparatiboa bidali dizun pertsonarekin kontaktuan jarri zaitez.
+        .row
+          .col-md-6.col-md-offset-4(style="margin-top:10px;")           
+            a(style="padding-right: 10px", href='https://twitter.com/COMPARATIVOS')
+              img(src='/images/RRSS/twittera.png')
+            a(style="padding-right: 10px", href='https://www.linkedin.com/groups/Comparativos-Obra-7498628?gid=7498628&mostPopular=&trk=tyah&trkInfo=tarId%3A1412096186376%2Ctas%3Acomparativos%2Cidx%3A2-1-4')
+              img(src='/images/RRSS/linkedina.png')
+            a(href='https://facebook.com/comparativos')
+              img(src='/images/RRSS/facebooka.png')

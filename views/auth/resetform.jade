@@ -1,0 +1,18 @@
+extends ../notlogged
+
+block body
+  .row
+    .col-lg-4.col-lg-offset-4
+      .well(style="margin-top:15%")
+        h1 #{__('Reset.Reestablecer')}
+        if errors
+          each val in errors
+            .alert.alert-danger= val    
+        form.form(role="form", action="/auth/reset/#{id}", method="post")
+          .form-group
+            label #{__('Reset.NuevoPassword')}
+            input.form-control(type="password",name="password",required,placeholder="#{__('Reset.NuevoPassword')}")
+          .form-group
+            label #{__('Reset.RepetirNuevoPassword')}
+            input.form-control(type="password",name="password2",required, placeholder="#{__('Reset.RepetirNuevoPassword')}")
+          button.btn.btn-success.btn-block(type="submit") #{__('Reset.Reestablecer')}

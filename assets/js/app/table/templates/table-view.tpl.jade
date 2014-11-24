@@ -1,0 +1,32 @@
+h1
+  | {{comparativo.title}}
+  small {{comparativo.obra.title}}
+
+span.btn.btn-success(ng-click="crearPeticion()") Crear peticón
+
+table.table.table-bordered.table-condensed
+  thead
+    tr
+      th(style='background: #F5F5F5;') Conceptos
+      th(style='background: #eee; text-align: center;') Cantidad
+      th(class="{{$index===0?'':''}}",ng-repeat='peticion in comparativo.petitions', ng-show='peticion.answered', style='text-align: center;')
+        | {{peticion.to.name}}
+  tbody
+    tr.comp-double-border(ng-repeat='row in comparativo.content')
+      td(style='background: #F5F5F5;')
+        strong(style='color: #555;') {{row.concept}}
+      td(style='text-align: center; background: #eee;') {{row.quantity}} {{row.unit}}
+      td(class="{{peticion.respuestas[0].content[row.order][0]==petRowBests[row.order]?'success':''}}{{peticion.respuestas[0].content[row.order][0]==petRowWorsts[row.order]?'danger':''}}",ng-repeat='peticion in comparativo.petitions', style='text-align: center;')
+        small.text-muted(style='display: block;')
+          | {{peticion.respuestas[0].content[row.order][0]}}€/{{row.unit}}
+        span {{peticion.respuestas[0].content[row.order][2]}}€
+        small.text-muted(style='display: block;') {{peticion.respuestas[0].content[row.order][1]}}
+  tfoot
+    tr
+      th(colspan='2', style='text-align: right;') TOTAL
+      th(class="{{$index===0?'':''}}",style='text-align: center;', ng-repeat='peticion in comparativo.petitions', ng-show='peticion.answered')   {{peticion.totalPrice}}€ 
+
+ul
+  li(ng-repeat="peticion in comparativo.petitions")
+    | {{peticion.to.email}} {{peticion.answered? 'ok':'waiting'}}
+    pre http://localhost:1337/form/{{peticion.id}}

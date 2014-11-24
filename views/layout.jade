@@ -1,0 +1,62 @@
+doctype html
+html(ng-app="comparativos")
+  head
+    // Viewport mobile tag for sensible mobile support
+    meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
+    // STYLES
+    link(rel="stylesheet", href="/styles/importer.css")
+    link(rel="stylesheet", href="/js/dependencies/ng-table.min.css")
+    // STYLES END
+    link(rel="image_src", href="http://www.comparativos.es/images/comparativos_60.png")
+
+  body(ng-controller="AppCtrl")
+    block body
+
+    // The linker searches for this tag and adds js.  If there's no linker, we point to sails.io.js
+    // SCRIPTS
+    script(src="/js/dependencies/sails.io.js")
+    script(src="/js/dependencies/angular.min.js")
+    script(src="/js/dependencies/moment.min.js")
+    script(src="/js/dependencies/jquery-2.1.1.min.js")
+    script(src="/js/dependencies/angular-moment.min.js")
+    script(src="/js/dependencies/angular-sails.min.js")
+    script(src="/js/dependencies/angular-ui-router.min.js")
+    script(src="/js/dependencies/bootstrap.min.js")
+    script(src="/js/dependencies/lodash.min.js")
+    script(src="/js/dependencies/ng-table.min.js")
+    script(src="/js/dependencies/randomColor.js")
+    script(src="/js/dependencies/ui-bootstrap-0.11.0.min.js")
+    script(src="/js/dependencies/ui-utils.min.js")
+    script(src="/js/app/app.js")
+    script(src="/js/app/comparativos/comparativos.js")
+    script(src="/js/app/comparativos/controllers/edit.js")
+    script(src="/js/app/comparativos/controllers/index.js")
+    script(src="/js/app/comparativos/controllers/list.js")
+    script(src="/js/app/comparativos/controllers/main.js")
+    script(src="/js/app/comparativos/controllers/view.js")
+    script(src="/js/app/comparativos/filters/index.js")
+    script(src="/js/app/header/index.js")
+    script(src="/js/app/home/home.js")
+    script(src="/js/app/obras/filters/index.js")
+    script(src="/js/app/obras/obras.js")
+    script(src="/js/app/profile/profile.js")
+    script(src="/js/app/table/filters/index.js")
+    script(src="/js/app/table/table.js")
+    script(src="/js/directives/index.js")
+    script(src="/js/directives/log.js")
+    script(src="/js/models/Comparativo.js")
+    script(src="/js/models/EventLog.js")
+    script(src="/js/models/Obra.js")
+    script(src="/js/models/Peticion.js")
+    script(src="/js/models/User.js")
+    script(src="/js/models/index.js")
+    script(src="/js/services/config.js")
+    script(src="/js/services/index.js")
+    script(src="/js/services/lodash.js")
+    script(src="/js/services/title.js")
+    script(src="/js/services/utils.js")
+    // SCRIPTS END
+
+    // TEMPLATES
+    script(type="text/javascript", src="/templates.js")
+    // TEMPLATES END

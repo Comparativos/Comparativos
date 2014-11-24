@@ -1,0 +1,82 @@
+.row
+  .col-md-10
+    h1
+      | {{comparativo.title}}
+      small {{comparativo.obra.title}}
+      //- Se mostrará solo hasta que se mande una petición y se trata de la edición de los comparativos
+      a.btn.btn-primary(ng-show="comparativo.peticiones.length===0",ng-click="edit()")
+        span.glyphicon.glyphicon-pencil
+        |  {{locale['Comparativo.View.Editar']}}
+  .col-md-2
+    a.btn.btn-info(ng-href='/api/comparativo/{{comparativo.id}}/download/',target="_blank")
+      i.glyphicon.glyphicon-download-alt
+      | {{locale['Comparativo.View.Excel']}}
+.row
+  table.table.table-bordered.table-condensed
+    thead
+      tr
+        th {{locale['Comparativo.View.Conceptos']}}
+        th(style='text-align: center;') {{locale['Comparativo.View.Cantidad']}}
+        th(class="{{$index===0?'':''}}",ng-repeat='peticion in comparativo.peticiones', style='text-align: center;')
+          | {{peticion.to.name}} 
+    tbody
+      tr.comp-double-border(ng-repeat='row in comparativo.content')
+        td
+          strong(style='color: #555;') {{row.concept}}
+        td(style='text-align: center;') {{row.quantity}} {{row.unit}}
+        td(class="{{peticion.respuesta.content[row.order][0]==petRowBests[row.order]?'success':''}}{{peticion.respuesta.content[row.order][0]==petRowWorsts[row.order]?'danger':''}}",ng-repeat='peticion in comparativo.peticiones', style='text-align: center;')
+          small.text-muted(style='display: block;', ng-show='peticion.answered')
+            | {{peticion.respuesta.content[row.order][0]}} € / {{row.unit}}
+          span(ng-show='peticion.answered') {{peticion.respuesta.content[row.order][2]}} € 
+          span(ng-show="peticion.respuesta.content[row.order][1]",style='cursor: pointer;', tooltip-placement='right', tooltip='{{peticion.respuesta.content[row.order][1] }}')
+            i.glyphicon.glyphicon-question-sign
+    tfoot
+      tr
+        td(colspan='2', style='text-align: right;text-transform:uppercase;') {{locale['Comparativo.View.Total']}}
+        td(class="{{$index===0?'':''}}",style='text-align: center;', ng-repeat='peticion in comparativo.peticiones')   
+          span(ng-show='peticion.answered') {{peticion.totalPrice}} € 
+      tr
+        td(colspan='2', style='text-align: right;text-transform:uppercase;') {{locale['Comparativo.View.FormaPago']}}
+        td(class="{{$index===0?'':''}}",style='text-align: center;', ng-repeat='peticion in comparativo.peticiones')   {{peticion.respuesta.formaPago}}
+      tr
+        td(colspan='2', style='text-align: right;text-transform:uppercase;') {{locale['Comparativo.View.Adjunto']}}
+        td(class="{{$index===0?'':''}}",style='text-align: center;', ng-repeat='peticion in comparativo.peticiones')
+          //-a(ng-show="peticion.respuesta.fileUrl!=null",ng-hide="peticion.respuesta.fileDownloadUrl",ng-click="prepareDownload(peticion.respuesta)") Preparar descarga
+          span.btn.btn-primary.btn-xs(ng-show="peticion.respuesta.fileUrl!=null",ng-click="prepareDownload(peticion.respuesta)") {{locale['Comparativo.View.Descargar']}}
+.row
+  .col-md-4
+    h5
+      b {{locale['Comparativo.View.PeticionesComparativo']}}
+      span(style='cursor: pointer;', tooltip-placement='right', tooltip='{{locale["Comparativo.View.PeticionHelp"]}}')
+        i.glyphicon.glyphicon-question-sign
+.row
+  .col-md-4
+    form.form
+      .form-group
+        btn.btn.btn-info(ng-click="ShowMail()") {{locale['Comparativo.View.EnviarPeticion']}}
+      .form-group
+        btn.btn.btn-info(ng-click="ShowPeticion()") {{locale['Comparativo.View.CrearPeticion']}}
+  .col-md-4
+    form.form(ng-submit='send()', id="mail")
+      .form-group
+        input.form-control(type='text', ng-model='newPeticion.to.name', placeholder='{{locale["Comparativo.View.NombreProveedor"]}}')   
+      .form-group
+        input.form-control(type='email', ng-model='newPeticion.to.email', placeholder='{{locale["Comparativo.View.EmailProveedor"]}}')
+      .form-group
+        button.btn.btn-success(type='submit') {{locale['Comparativo.View.EnviarPeticion']}}
+    form.form(ng-submit='send()', id="peticion")
+      .form-group
+        input.form-control(type='text', ng-model='newPeticion.to.name', placeholder='{{locale["Comparativo.View.NombreProveedor"]}}')
+      .form-group
+        button.btn.btn-success(type='submit') {{locale['Comparativo.View.CrearPeticion']}}
+.row
+  .col-md-8
+    .media-list
+      .media(ng-repeat='peticion in comparativo.peticiones', ng-show="!peticion.answered || !peticion.to.email")
+        span.media-object.pull-left
+        .media-body
+          h4.media-heading
+            | {{peticion.to.name}}
+          pre
+            div
+              p {{siteUrl}}form/{{peticion.id}}

@@ -1,0 +1,15 @@
+.modal-header
+  button.close(type='button', data-dismiss='modal')
+    span(aria-hidden='true') ×
+    span.sr-only Close
+  h4.modal-title Crear Nueva Peticion
+.modal-body
+  form.form(ng-submit="createPeticion()")
+    .form-group
+      label Email*
+      input.form-control(type="email",required,placeholder="Email",ng-model="newPeticion.to.email")
+    .form-group
+      label Nombre (opcional)
+      input.form-control(type="text",placeholder="Nombre",ng-model="newPeticion.to.name")
+    input.btn.btn-success.btn-block(type="submit",value="Guardar")
+    button.btn.btn-default(data-dismiss='modal') Cancelar

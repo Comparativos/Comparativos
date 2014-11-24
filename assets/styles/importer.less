@@ -1,0 +1,388 @@
+/**
+ * importer.less
+ *
+ * By default, new Sails projects are configured to compile this file
+ * from LESS to CSS.  Unlike CSS files, LESS files are not compiled and
+ * included automatically unless they are imported below.
+ *
+ * The LESS files imported below are compiled and included in the order
+ * they are listed.  Mixins, variables, etc. should be imported first
+ * so that they can be accessed by subsequent LESS stylesheets.
+ *
+ * (Just like the rest of the asset pipeline bundled in Sails, you can
+ * always omit, customize, or replace this behavior with SASS, SCSS,
+ * or any other Grunt tasks you like.)
+ */
+
+// For example:
+//
+// @import 'variables/colors.less';
+// @import 'mixins/foo.less';
+// @import 'mixins/bar.less';
+// @import 'mixins/baz.less';
+//
+// @import 'styleguide.less';
+// @import 'pages/login.less';
+// @import 'pages/signup.less';
+//
+// etc.
+//COMPARATIVOS VIEW
+#mail{
+  display: none;
+}
+#peticion{
+  display: none;
+}
+
+
+//TABS
+#tabs {
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#tabs li {
+  float: left;
+  margin: 0 .5em 0 0;
+}
+
+#tabs a {
+  position: relative;
+  background: #A9C5EB; 
+  padding: .7em 3.5em;
+  float: left;
+  text-decoration: none;
+  color: #444;
+  border-radius: 5px 0 0 0;
+  box-shadow: 0 2px 2px rgba(0,0,0,.4);
+}
+
+#tabs a:hover,
+#tabs a:hover::after,
+#tabs a:focus,
+#tabs a:focus::after {
+  background: #fff;
+}
+
+#tabs a:focus {
+  outline: 0;
+}
+
+#tabs a::after {
+  content:'';
+  position:absolute;
+  z-index: 1;
+  top: 0;
+  right: -.5em;  
+  bottom: 0;
+  width: 1em;
+  background: #A9C5EB;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.4);
+  transform: skew(10deg);
+  border-radius: 0 5px 0 0;  
+}
+
+#tabs #current a,
+#tabs #current a::after {
+  background: #fff;
+  z-index: 3;
+}
+
+#content {
+  background: #fff;
+  padding: 2em;
+  height: 220px;
+  position: relative;
+  z-index: 2; 
+  border-radius: 0 5px 5px 5px;
+  box-shadow: 0 -2px 3px -2px rgba(0, 0, 0, .5);
+}
+
+//TABLA
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+body {
+  background-color: #3e94ec;
+  font-family: "Ubuntu-C";
+  font-size: 11px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+
+div.table-title {
+  display: block;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+}
+
+.table-title h3 {
+   color: #fafafa;
+   font-size: 25px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Ubuntu-C";
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+
+
+/*** Table Styles **/
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+// th.sortable:hover{
+//   background-color:gray;
+// }
+
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:18px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+// th:first-child {
+//   border-top-left-radius:3px;
+// }
+ 
+// th:last-child {
+//   border-top-right-radius:3px;
+//   border-right:none;
+// }
+
+// th.header:hover{
+//   background-color: white;
+// }
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:11px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+// tr:hover td {
+//   background:#4E5066;
+//   // color:#FFFFFF;
+//   border-top: 1px solid #22262e;
+//   border-bottom: 1px solid #22262e;
+// }
+ 
+// tr:first-child {
+//   border-top:none;
+// }
+
+// tr:last-child {
+//   border-bottom:none;
+// }
+ 
+// tr:nth-child(odd) td {
+//   background:#EBEBEB;
+// }
+ 
+// // tr:nth-child(odd):hover td {
+// //   background:#4E5066;
+// // }
+
+// tr:last-child td:first-child {
+//   border-bottom-left-radius:3px;
+// }
+ 
+// tr:last-child td:last-child {
+//   border-bottom-right-radius:3px;
+// }
+ 
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:13px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+// td:last-child {
+//   border-right: 0px;
+// }
+
+// th.text-left {
+//   text-align: left;
+// }
+
+// th.text-center {
+//   text-align: center;
+// }
+
+// th.text-right {
+//   text-align: right;
+// }
+
+// td.text-left {
+//   text-align: left;
+// }
+
+// td.text-center {
+//   text-align: center;
+// }
+
+// td.text-right {
+//   text-align: right;
+// }
+//paginacion
+.g-tabl-pager.ng-scope{
+  background-color: white;
+}
+
+
+//RESTO
+@import 'bootstrap/less/bootstrap.less';
+
+@media only screen and (max-width: 800px) {
+  #unseen table td:nth-child(2), 
+  #unseen table th:nth-child(2) {display: none;}
+}
+ 
+@media only screen and (max-width: 640px) {
+  #unseen table td:nth-child(4),
+  #unseen table th:nth-child(4),
+  #unseen table td:nth-child(7),
+  #unseen table th:nth-child(7),
+  #unseen table td:nth-child(8),
+  #unseen table th:nth-child(8){display: none;}
+}
+
+#tablecenter {
+  text-align: center;
+  font-family : "Ubuntu-C";
+  src: url('/styles/fonttype/Ubuntu-C.TTF');
+  font-size: 17px;
+}
+.img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+.p {
+  font-size : 17px;  
+  text-align: center;
+  font-family : "Ubuntu-C";
+  src: url('/styles/fonttype/Ubuntu-C.TTF');  
+}
+
+.h2 {
+  font-family : "Ubuntu-C";
+  src: url('/styles/fonttype/Ubuntu-C.TTF');
+  font-size : 40px;
+}
+
+#linea {
+  background-color: #d60062;
+  height: 2px; 
+  margin-top:1%;
+}
+
+#btn {
+  font-family : "Ubuntu-C";
+  src: url('/styles/fonttype/Ubuntu-C.TTF');
+  font-size: 17px;
+}
+
+.h3 {
+  font-family : "Ubuntu-C";
+  src: url('/styles/fonttype/Ubuntu-C.TTF');
+  font-size : 17px;
+}
+
+.well {
+  font-family : "Ubuntu-C";
+  src: url('/styles/fonttype/Ubuntu-C.TTF');
+  opacity: 5;
+  //border-style: dashed;
+  //boder-color: black;
+}
+
+#avisoCookies {
+  font-family : "Ubuntu-C";
+  src: url('/styles/fonttype/Ubuntu-C.TTF');
+}
+
+#footer {
+  font-family : "Ubuntu-C";
+  src: url('/styles/fonttype/Ubuntu-C.TTF');
+  background-color: #203e99;
+  font-color: white;
+  background-color: #203e99;
+  border-radius: 5px 5px 5px 5px;
+  margin-bottom: 5px;
+}
+
+.a {
+  font-family : "Ubuntu-C";
+  src: url('/styles/fonttype/Ubuntu-C.TTF');
+  font-size: 17px;
+  font-weight: bold;
+}
+#lines {
+  background-color: black;
+  height: 2px;
+}
+
+#txtPie {
+  font-family : "Ubuntu-C";
+  src: url('/styles/fonttype/Ubuntu-C.TTF');
+  font-size: 17px;
+  color: white;
+}
+
+#header {
+  background-color: #203e99;
+  border-radius: 5px 5px 5px 5px;
+  font-family : "Ubuntu-C";
+  src: url('/styles/fonttype/Ubuntu-C.TTF');
+  color: white;
+  margin-top: 5px;
+  font-size: 17px;
+}
+
+#tablecenter th {
+  background-color: white;
+  border-right: 0px;
+}
+
+#tablecenter td:hover {
+  border-button: 0px;
+}
+
+#masterBody{
+  background-image: url('/images/fondo2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

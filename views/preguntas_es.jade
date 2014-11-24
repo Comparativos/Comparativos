@@ -1,0 +1,196 @@
+extends ./notloggedhome
+
+block body
+  .container
+    .row(id="header")
+      .col-md-4
+        a(href="/")
+          img.img(src='/images/comparativos2blanco.png', rel="image_src")   
+  .container
+    .row
+      .col-md-4
+         ul.nav.navbar-nav.pull-right
+          li
+            a(href="#r1") ¿Es gratis utilizar comparativos.es?
+          li
+            a(href="#r2") Si me registro, a qué me comprometo.
+          li
+            a(href="#r3") ¿Son seguras las gestiones que se realizan en comparativos.es?
+          li
+            a(href="#r4") ¿Qué tengo que hacer si no funcionan mis claves de acceso?
+          li
+            a(href="#r5") ¿Qué datos son necesarios para registrarse?
+          li
+            a(href="#r6") ¿Cuál es el grado de protección de mis datos?
+          li
+            a(href="#r7") ¿Qué tengo que hacer para actualizar o cambiar mis datos y preferencias?
+          li
+            a(href="#r34") ¿Qué diferencia hay entre creado y actividad?
+          li
+            a(href="#r35") ¿Qué significa el apartado de petición?
+          li
+            a(href="#r8") ¿Cómo funciona el apartado de obras? ¿Para qué sirve?
+          li
+            a(href="#r9") ¿Qué significa que una obra está archivada?
+          li
+            a(href="#r10") Una vez archivada una obra, ¿es posible desarchivarla?
+          li
+            a(href="#r11") ¿Cómo genero el nuevo comparativo?
+          li
+            a(href="#r12") ¿Qué información se facilita a los proveedores?
+          li
+            a(href="#r14") ¿En qué formato pueden adjuntar los documentos?
+          li
+            a(href="#r15") ¿Puedo editar la medición de algún comparativo?
+          li
+            a(href="#r16") ¿Una vez enviada la petición, puedo realizar algún cambio en el comparativo?
+          li
+            a(href="#r17") ¿Qué tengo que hacer para enviar las mediciones a mis proveedores?
+          li
+            a(href="#r18") ¿Qué diferencia hay entre 'Enviar por correo' y 'Generar URL'?
+          li
+            a(href="#r19") ¿El proveedor debe estar registrado para responder a mis peticiones?
+          li
+            a(href="#r20") ¿Cómo sé los envíos que he realizado?
+          li
+            a(href="#r21") ¿Cómo sé que he recibido una nueva oferta?
+          li
+            a(href="#r22") ¿Qué información deben introducir los proveedores?
+          li
+            a(href="#r25") ¿Qué tipo de documento puede adjuntar el proveedor a su oferta?
+          li
+            a(href="#r24") ¿Una vez recibidas las ofertas de los proveedores, puedo incorporar a otros proveedores al comparativo?
+          li
+            a(href="#r26") ¿Dónde puedo consultar los documentos que adjunta el proveedor de su oferta?
+          li
+            a(href="#r27") ¿Si el proveedor no ha realizado la oferta correctamente, puede volver a responder el formulario?
+          li
+            a(href="#r28") ¿No puedo abrir un archivo adjunto por el proveedor, que debo hacer?
+          li
+            a(href="#r29") ¿Las ofertas que recibo las ven los demás proveedores?
+          li
+            a(href="#r30") ¿Cómo puedo descargar el comparativo?
+      .col-md-8
+        h1 GENERAL
+        #r1
+          h3 ¿Es gratis utilizar comparativos.es?
+          p Comparativos.es es un servicio web gratuito. Basta un  simple registro  mediante email y contraseña y podrás trabajar sin ningún problema. 
+        #r2
+          h3 ¿Si me registro, a que me comprometo?
+          p No se compromete a ningún coste ni a reportar ninguna información a comparativos.es. 
+        #r3
+          h3 ¿Son seguras las gestiones que se realizan en comparativos.es?
+          p Toda información sensible es cifrada mediante un sistema externo a comparativos.es por lo que esa información cifrada no puede ser consultada por el administrador de la web.
+        h1 MI PERFIL
+        #r4
+          h3 ¿Qué tengo que hacer si no funcionan mis claves de acceso?
+          p Si no funcionan o ha olvidado sus claves de acceso puede restaurar sus claves introduciendo su email de registro en la opción de restaurar clave que se encuentra debajo de la pestaña de registro.
+        #r5
+          h3 ¿Qué datos son necesarios para registrarse?
+          p Para poder regístrate en comparativos.es, como campos obligatorios se necesitan el email y una contraseña de 8 caracteres como mínimo. Además, también es necesario aceptar el apartado de políticas de privacidad.
+          p Después, en el apartado de perfil se podrán añadir otros datos como el nombre, la constructora, el cargo, el teléfono y el idioma.
+        #r6
+          h3 ¿Cuál es el grado de protección de mis datos?
+          p Los datos son guardados de forma segura en la base de datos y la contraseña se encripta, con lo cual Comparativos.es nunca almacenará la contraseña del usuario sino el código de encriptación que es lo que se usa para acceder.
+        #r7
+          h3 ¿Qué tengo que hacer para actualizar o cambiar mis datos y preferencias?
+          p Para actualizar o cambiar los datos debes ir al apartado de Mi perfil:
+            p 1. Haz click en la flecha de la parte superior derecha.
+            p 2. Entra en Mi Perfil.
+            p 3. Utilizar opción del lápiz para editar lo que desees y guarda los cambios realizados.
+        h1 LISTADO COMPARATIVOS
+        #r34
+          h3 ¿Qué diferencia hay entre creado y actividad?
+          p En creado aparecerá la fecha de creación del documento y en actividad, la fecha de las últimas modificaciones que se hayan realizado en el comparativo.
+        #r35
+          h3 ¿Qué significa el apartado de petición?
+          p En ella aparecerán las diferentes peticiones que se hayan generado. El primer número nos indica las respuestas recibidas y el segundo las peticiones realizadas.
+        h1 OBRAS
+        #r8
+          h3 ¿Cómo funciona el apartado de obras? ¿Para qué sirve?
+          p En este apartado vas a poder visualizar todas las obras que gestionas o has gestionado. Por un lado, en el apartado de “En curso” aparecerán las obras que se estén llevando a cabo. Por otro lado, “archivadas” las obras terminadas.
+        #r9
+          h3 ¿Qué significa que una obra está archivada?
+          p Las obras archivadas se consideran terminadas, al estar archivadas cuando se crea un comparativo nuevo no aparece la obra archivada.
+        #r10
+          h3 Una vez archivada una obra, ¿es posible desarchivarla?
+          p Si, en el caso de haber archivado una obra, puedes moverla a la pestaña de obras en curso.
+        h1 NUEVO COMPARATIVO
+        h2 MEDICIONES
+        #r11
+          h3 ¿Cómo genero el nuevo comparativo?
+          p Crear un comparativo es muy sencillo. Pulse el botón de 'Crear Comparativo' que aparece en la parte superior izquierda, en ese momento le aparece una ventana
+          p En la parte superior se le pediran los siguientes campos:
+            p a.  Nombre comparativo: Campo de texto.
+            p b.  breve descripción: Este campo es opcional y de texto.
+            p c.  Obra: En este apartado puedes escoger una obra ya creada o crear una nueva. 
+          p En la parte inferior:
+            p a. Unidad:  Kg, m2,...
+            p b.  Concepto: campo de texto.
+            p c.  Cantidad: deberá introducir la cantidad requerida, un número.
+            p d.  Notas: aquí puede especificar cuanquier anomalia del concepto o lo que considere oportuno.
+          p Para agregar líneas al comparativo simplemente tendra que hacer click en el boton de 'Añadir línea' y si se confunde en alguna solo tendrá que pulsar sobre la papelera que aparece en la línea y se le borrará.
+          p Una vez finalizado pulse 'Guardar' y ya tendrá generado el nuevo comparativo.
+        #r12
+          h3 ¿Qué información se facilita a los proveedores?
+          p En el momento que generes un comparativo, además de introducir las mediciones, existe la opción de adjuntar un archivo. En este apartado le das al botón de Examinar y adjuntos el archivo correspondiente.
+        #r14
+          h3 ¿En qué formato pueden adjuntar los documentos?
+          p Los archivos admitidos son PDF.
+        #r15
+          h3 ¿Puedo editar la medición de algún comparativo?
+          p Las mediciones del comparativo se pueden editar siempre y cuando no se haya realizado ninguna petición al proveedor. Para editar, debes  entrar en el comparativo correspondiente y pulsar el botón editar.  Después de cambiar los campos correspondientes, no olvides guardarlo
+        h2 ENVIO
+        #r16
+          h3 ¿Una vez enviada la petición, puedo realizar algún cambio en el comparativo?
+          p En el momento de enviar las mediciones a algún proveedor, no vas a poder editar ningún campo del comparativo.
+        #r17
+          h3 ¿Qué tengo que hacer para enviar las mediciones a mis proveedores?
+          p Una vez generado el comparativo, existen dos opciones para enviar:
+          p 1. Envío mail directo:
+            p a. Elige la opción de Enviar por mail.
+            p b.  Escribe la dirección de correo electrónico del proveedor a quien desees enviar.
+          p 2.  Envío personal
+            p a.  Escribe en la casilla en blanco el nombre del proveedor.
+            p b. Se generará un link o URL que deberá copiarlo en su correo personal.
+            p c.  Envía mail personal con las especificaciones. 
+        #r18
+          h3 ¿Qué diferencia hay entre 'Enviar por correo' y 'Generar URL'?
+          p 'Enviar por correo' : Comparativos.es cuenta con un e-mail por defecto el cual se le enviá al porveedor con la petición.
+          p 'Generar URL' :  Se generá un link / URL, dicho  link contiene el formulario con la petición.
+        #r19
+          h3 ¿El proveedor debe estar registrado para responder a mis peticiones?
+          p No es necesario que el proveedor esté registrado en comparativos.es. El proveedor recibirá un enlace donde podrá rellenar el formulario de las mediciones y enviarlo sin ningún problema. 
+        #r20
+          h3 ¿Cómo sé los envíos que he realizado?
+          p En la visualización del comparativo le aparece una tabla. La tabla al enviarse las peticiones se crean columnas con los nombres de los porveedores enviados.
+        #r21
+          h3 ¿Cómo sé que he recibido una nueva oferta?
+          p En el momento de recibir una respuesta, el icono del mensaje situado en la parte superior derecha se pondrá de color amarillo, indicando una nueva notificación. Haciendo click en él, podrás ver las últimas ofertas recibidas.
+          p Otra vía es ir a la visualización del comparativo y si la petición está contestada la columna de dicho proveedor estará completada con datos.
+        h1 PROVEEDOR
+        #r25
+          h3 ¿En qué formato pueden adjuntar los documentos?
+          p El proveedor podrá añadir los documentos deseados en formato PDF.
+        #r22
+          h3 ¿Qué información deben introducir los proveedores?
+          p Los proveedores deberán introducir obligatoriamente los precios unitarios de las mediciones correspondientes. Además, también podrán añadir algún comentario, archivo y la forma de pago correspondiente. 
+        h1 CUADRO COMPARATIVO
+        #r26 
+          h3 ¿Dónde puedo consultar los documentos que adjunta el proveedor de su oferta?
+          p Los documentos adjuntos del proveedor se pueden visualizar en la parte inferior de la tabla comparativa, en la columna correspondiente al proveedor.
+        #r27 
+          h3 ¿Si el proveedor no ha realizado la oferta correctamente, puede volver a responder el formulario?
+          p Cada formulario generado corresponde a un solo proveedor. Una vez rellenado, no podrá editarse o añadirle nuevos elementos. Por lo tanto, tendrá que generarse otro nuevo formulario y enviarlo por segunda vez.
+        #r28 
+          h3 ¿No puedo abrir un archivo adjunto por el proveedor, que debo hacer?
+          p Puede que no dispongas del formato correspondiente al documento. Puedes instalarte el programa correspondiente o contacte con el proveedor y pídale que te vuelva a enviar el archivo en otro formato que dispongas. 
+          p Recuerde que cada formulario corresponde a un solo proveedor. Si deseas recibir otra respuesta en tu comparativo, deberás generar otro formulario o puedes recibirlo en tu correo personal
+        #r29
+          h3 ¿Las ofertas que recibo las ven los demás proveedores?
+          p No, cada oferta es privada. 
+        #r30
+          h3 ¿Cómo puedo descargar el comparativo?
+          p El comparativo se puede descargar en formato Excel.
+      
+         

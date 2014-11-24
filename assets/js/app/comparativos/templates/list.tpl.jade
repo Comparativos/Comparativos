@@ -1,0 +1,35 @@
+.row
+  h1
+    a.btn.btn-success(ng-click="new()", style="margin-top:-5%;") {{locale['Comparativos.List.NuevoComparativo']}} 
+.row
+  table.table.table-hover.table-condensed.table-striped(ng-table='tableParams', show-filter='true')
+    thead
+      tr
+        th.sortable(ng-class="{'sort-asc': tableParams.isSortBy('title', 'asc'),'sort-desc': tableParams.isSortBy('title', 'desc')}", ng-click="tableParams.sorting({'title' : tableParams.isSortBy('title', 'asc') ? 'desc' : 'asc'})")
+          div {{locale["Comparativos.List.NombreComparativo"]}}
+        th.sortable(ng-class="{'sort-asc': tableParams.isSortBy('obra.title', 'asc'),'sort-desc': tableParams.isSortBy('obra.title', 'desc')}", ng-click="tableParams.sorting({'obra.title' : tableParams.isSortBy('obra.title', 'asc') ? 'desc' : 'asc'})")
+          div {{locale["Comparativos.List.Obra"]}}    
+        th.sortable(ng-class="{'sort-asc': tableParams.isSortBy('createdAt', 'asc'),'sort-desc': tableParams.isSortBy('createdAt', 'desc')}", ng-click="tableParams.sorting({'createdAt' : tableParams.isSortBy('createdAt', 'asc') ? 'desc' : 'asc'})")
+          div {{locale["Comparativos.List.Creado"]}}
+        th.sortable(ng-class="{'sort-asc': tableParams.isSortBy('updatedAt', 'asc'),'sort-desc': tableParams.isSortBy('updatedAt', 'desc')}", ng-click="tableParams.sorting({'updatedAt' : tableParams.isSortBy('updatedAt', 'asc') ? 'desc' : 'asc'})")
+          div {{locale["Comparativos.List.Actividad"]}}
+        th
+          div                                      
+    tbody
+      tr(ng-repeat='comparativo in $data')
+          td(data-title="locale['Comparativos.List.Comparativos']", sortable='\'title\'', filter='{ \'title\': \'text\' }')
+              a(ui-sref='comparativos.view({id:comparativo.id})')
+                | {{comparativo.title}}
+          td(data-title="locale['Comparativo.Edit.Obra']", sortable='\'obra.title\'', filter='{ \'obra\': \'select\' }', filter-data='obras($column)')
+            a(ui-sref='obras.view({id:comparativo.obra.id})')
+              | {{comparativo.obra.title}}          
+          td(data-title="locale['Comparativos.List.Creado']", sortable='\'createdAt\'')
+            | {{comparativo.createdAt | amDateFormat : 'DD/MM/YYYY'}}
+            //amDateFormat:'Do MMMM YYYY'}}
+          td(data-title="locale['Obras.View.UltimaActividad']", sortable='\'lastActivity\'')
+            | {{comparativo.updatedAt | amDateFormat: 'DD/MM/YYYY'}}       
+          td(data-title='\'      \'')
+            .btn-group.btn-group-xs
+              a.btn.btn-info.glyphicon.glyphicon-download-alt(title='Descargar', ng-href='/api/comparativo/{{comparativo.id}}/download',target="_blank")
+              span.btn.btn-danger.glyphicon.glyphicon-trash(title='Eliminar comparativo', ng-click='destroyComparativo(comparativo)')
+  

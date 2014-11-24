@@ -1,0 +1,53 @@
+.container
+  .row
+    h3 {{locale['Profile.DatosPerfil']}}
+    table.table
+      thead
+        th {{locale['Profile.Nombre']}}
+        th {{locale['Profile.Email']}}
+      tbody
+        td 
+          | {{currentUser.first_name}} 
+          span.btn.btn-primary.btn-xs(ng-click="edit('first_name')")
+            i.glyphicon.glyphicon-pencil 
+        td
+          | {{currentUser.email}} 
+          span.btn.btn-primary.btn-xs(ng-click="edit('email')")
+            i.glyphicon.glyphicon-pencil 
+    h3 {{locale['Profile.DatosUsuario']}}
+    table.table
+      thead
+        th {{locale['Profile.Constructora']}}
+        th {{locale['Profile.Cargo']}}
+        th {{locale['Profile.Telefono']}}
+        th {{locale['Profile.UsuarioDesde']}}
+      tbody
+        td
+          | {{currentUser.constructora}} 
+          span.btn.btn-primary.btn-xs(ng-click="edit('constructora')")
+            i.glyphicon.glyphicon-pencil 
+        td
+          | {{currentUser.cargo}} 
+          span.btn.btn-primary.btn-xs(ng-click="edit('cargo')")
+            i.glyphicon.glyphicon-pencil 
+        td
+          | {{currentUser.phone}} 
+          span.btn.btn-primary.btn-xs(ng-click="edit('phone')")
+            i.glyphicon.glyphicon-pencil 
+        td
+          | {{currentUser.createdAt | amDateFormat: 'DD/MM/YYYY'}}
+    h3 {{locale['Profile.Ajustes']}}
+    table.table
+      thead
+        th {{locale['Profile.Idioma']}}
+      tbody
+        td
+          .radio
+            label
+              input#optionsRadios1(type='radio',ng-change="showSaveLocale=true", ng-model="userLocale", name='optionsRadios', value='es', checked='{{currentUser.locale==="es"||currentUser.locale===""?true:false}}')
+              | {{locale['Profile.Castellano']}}
+          .radio
+            label
+              input#optionsRadios2(type='radio',ng-change="showSaveLocale=true", ng-model="userLocale", name='optionsRadios', value='eu', checked='{{currentUser.locale==="eu"?true:false}}')
+              | {{locale['Profile.Euskara']}}
+          span.btn.btn-success(ng-show="showSaveLocale",ng-click="setLocale()") {{locale['Profile.CambiarIdioma']}}

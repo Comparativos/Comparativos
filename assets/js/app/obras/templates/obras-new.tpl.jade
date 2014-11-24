@@ -1,0 +1,19 @@
+.modal-header
+  button.close(type='button', ng-click="close()")
+    span(aria-hidden='true') ×
+    span.sr-only Cerrar
+  h4.modal-title {{locale['Obras.New.NuevaObra']}}
+.modal-body
+  form.form()
+    .form-group
+      label {{locale['Obras.New.NombreObra']}} *
+      input.form-control(type="text",required,placeholder="{{locale['Obras.New.NombreObra']}}",ng-model="newObra.title")
+    .form-group
+      label {{locale['Obras.New.Descripcion']}}
+      textarea.form-control(ng-model="newObra.description")
+  .row
+    .col-sm-4
+      span.label.label-warning * {{locale['Obras.New.CamposObligatorios']}}
+.modal-footer
+  button.btn.btn-success(ng-click="createObra()") {{locale['Obras.New.Guardar']}}
+  button.btn.btn-danger(ng-click="close()") {{locale['Obras.New.Cancelar']}}

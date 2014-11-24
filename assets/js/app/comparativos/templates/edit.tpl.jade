@@ -1,0 +1,54 @@
+.modal-header
+  button.close(type='button', ng-click="close()")
+    span(aria-hidden='true') ×
+    span.sr-only Cerrar
+  h4.modal-title {{locale['Comparativo.Edit.NuevoEditarComparativo']}}
+.modal-body
+  .row
+    .col-sm-6 
+      .form-group
+        label.sr-only(for='newComparativoTitle') {{locale['Comparativo.Edit.NombreComparativo']}} *
+        input#newComparativoTitle.form-control(type='text', required, ng-model='newComparativo.title', placeholder='{{locale["Comparativo.Edit.NombreComparativo"]}}')
+      .form-group
+        label.sr-only(for='newComparativoDescription') {{locale['Comparativo.Edit.Descripcion']}}
+        input#newComparativoDescription.form-control(type='text', ng-model='newComparativo.description', placeholder='{{locale["Comparativo.Edit.BreveDescripcion"]}}')
+    .col-sm-4
+      .form-group(ng-hide='status.creatingNewObra')
+        label.sr-only(for='newComparativoObra') {{locale['Comparativo.Edit.Obra']}} *
+        select#newComparativoObra.form-control(name='newComparativoObra', ng-model='newComparativo.obra', ng-options='obra.id as obra.title for obra in obras')
+          option(value='') {{locale['Comparativo.Edit.SeleccioneObra']}}
+      .form-group(ng-show='status.creatingNewObra')
+        label.sr-only(for='newObraTitle') {{locale['Comparativo.Edit.NombreObra']}}
+        input#newObraTitle.form-control(type='text', ng-model='newObra.title', placeholder='{{locale["Comparativo.Edit.NombreObra"]}}')
+    .col-sm-2
+      span.btn.btn-default(ng-hide='status.creatingNewObra', ng-click='status.creatingNewObra=true;') {{locale['Comparativo.Edit.NuevaObra']}}
+      button.glyphicon.glyphicon-remove.btn.btn-danger(ng-show='status.creatingNewObra', ng-click='status.creatingNewObra=false')
+        i.fa.fa-times
+  .row
+    ol.breadcrumb
+        li
+          b {{locale['Comparativo.Edit.LineasComparativo']}}
+  .row
+    table.table.table-hover
+      tr
+        th {{locale['Comparativo.Edit.Unidad']}} *
+        th {{locale['Comparativo.Edit.Concepto']}} *
+        th {{locale['Comparativo.Edit.Cantidad']}} *
+        th {{locale['Comparativo.Edit.Notas']}}
+      tr(ng-repeat='row in newComparativo.content')
+        p {{row}}
+        td 
+          input.input(id='editCompContentRowUnit{{row.id}}', type='text' name='editCompContentRowUnit{{row.id}}', required='required', ng-model='newComparativo.content[row.id].unit', text="row.unit", placeholder="kg, m2,...")
+        td                     
+          input.input(id='editCompContentRowConcept{{row.id}}', name='editCompContentRowConcept{{row.id}}', type='text', required='required', ng-model='newComparativo.content[row.id].concept', text="row.content", placeholder="{{locale['Comparativo.Edit.Concepto']}}")
+        td 
+          input.input(id='editCompContentRowQty{{row.id}}', type='number', min ='0', name='editCompContentRowQty{{row.id}}', required='required', ng-model='newComparativo.content[row.id].quantity', text='row.quantity', placeholder="{{locale['Comparativo.Edit.Cantidad']}}")
+        td 
+          input.input(id='editCompContenRowNotes{{row.id}}', name='editCompContentRowNotes{{row.id}}', type='text', ng-model='newComparativo.content[row.id].notes', text='row.notes', placeholder="{{locale['Comparativo.Edit.Notas']}}")
+  .row
+    .col-sm-4
+      button.pull-left.btn.btn-primary(ng-click='addRow()') {{locale['Comparativo.Edit.AnadirLinea']}}      
+.modal-footer
+  p * {{locale['Comparativo.Edit.CamposObligatorios']}}
+  button.btn.btn-danger(ng-click="close()", style="clear:both;") {{locale['Comparativo.Edit.Cancelar']}}
+  button.btn.btn-success(ng-show="newComparativo.content.length>0",ng-click="submitComparativo()") {{locale['Comparativo.Edit.Guardar']}}

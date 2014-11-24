@@ -1,0 +1,21 @@
+.row
+  h1 {{locale['Obras.List.Obras']}}
+  ul.nav.nav-tabs(role='tablist', id="tabs")
+    li.active
+      a(href='#EnCurso', role='tab', data-toggle='tab') {{locale['Obras.List.EnCurso']}}
+    li
+      a(href='#Archivadas', role='tab', data-toggle='tab') {{locale['Obras.List.Archivadas']}}
+  .tab-content(id="content")
+    #EnCurso.tab-pane.active
+      .div
+        ul(style="list-style-type: none;")
+          li(ng-repeat="obra in obras | showActive", style="margin-left:2%")
+            a(ui-sref="obras.view({id:obra.id})") {{obra.title}}
+    #Archivadas.tab-pane
+      .div
+        ul(style="list-style-type: none;")
+          li(ng-repeat="obra in obras | showArchived", style="margin-left:2%")
+            a(ui-sref="obras.view({id:obra.id})") {{obra.title}}
+.row
+    .col-lg-2.col-lg-offset-10
+        span.btn.btn-success(ng-click="open()") {{locale['Obras.List.CrearObra']}}

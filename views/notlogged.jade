@@ -1,0 +1,19 @@
+// Custom NO LOGGED page. No Angular dependencies, only Bootstrap
+doctype html
+html
+  head
+    title= __('SiteTitle')
+    // Viewport mobile tag for sensible mobile support
+    meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
+    meta(property="og:title" content="Comparativos de Obras")
+    meta(property="og:description" content="Crea comparativos y enviaselos a tus proveedores para recibir las ofertas")
+    meta(property="og:image" content="http://www.comparativos.es/images/comparativosFB.png")
+    meta(property="og:url" content="http://www.comparativos.es")
+    link(rel="stylesheet", href="/styles/importer.css")
+    //- link(rel="stylesheet", href="/js/dependencies/ng-table.min.css")
+    //- link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    //- link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css')
+    script(src="/js/dependencies/jquery-2.1.1.min.js")
+    script(src="/js/dependencies/bootstrap.min.js")
+  body(id="masterBody")
+    block body

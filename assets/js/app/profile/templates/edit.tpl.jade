@@ -1,0 +1,27 @@
+.modal-header
+  button.close(type='button', ng-click="close()")
+    span(aria-hidden='true') ×
+    span.sr-only Cerrar
+  h4.modal-title Edit Profile
+form.form()
+  .modal-body
+      .form-group(ng-show="editingField=='first_name'")
+        label Nombre
+        input.form-control(type="text",placeholder="Nombre",ng-model="data.value")
+      .form-group(ng-show="editingField=='email'")
+        .alert.alert-danger(ng-show="error==='E_VALIDATION'") Introduzca un email válido
+        label Email
+        input.form-control(type="text",placeholder="Email",ng-model="data.value")
+      .form-group(ng-show="editingField=='constructora'")
+        label Empresa
+        input.form-control(type="text",placeholder="Nombre de empresa",ng-model="data.value")                  
+      .form-group(ng-show="editingField=='cargo'")
+        label Cargo
+        input.form-control(type="text",placeholder="Cargo",ng-model="data.value")        
+      .form-group(ng-show="editingField=='phone'")
+        .alert.alert-danger(ng-show="error==='E_VALIDATION'") Introduzca un número de teléfono válido
+        label Teléfono
+        input.form-control(type="text",placeholder="Teléfono",ng-model="data.value")        
+  .modal-footer
+    input.btn.btn-success(type="submit",value="Guardar",ng-click="submit()") 
+    button.btn.btn-danger(ng-click="close()") Cancelar
